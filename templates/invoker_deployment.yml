@@ -57,7 +57,7 @@ spec:
       - name: "wait-for-kafka"
         image: "busybox"
         imagePullPolicy: "IfNotPresent"
-        command: ["sh", "-c", "result=1; until [ $result -eq 0 ]; do nslookup {{ .Values.global.kafkaServiceName}}.{{ .Release.Namespace }}; result=$?; echo waiting for {{ .Values.global.kafkaServiceName}}.{{ .Release.Namespace }}; sleep 1; done;"]
+        command: ["sh", "-c", "result=1; until [ $result -eq 0 ]; do nslookup {{ .Values.global.kafkaServiceName}}.{{ .Release.Namespace }}.svc.cluster.local; result=$?; echo waiting for {{ .Values.global.kafkaServiceName}}.{{ .Release.Namespace }}.svc.cluster.local; sleep 1; done;"]
 
       containers:
       - name: {{ template "invoker_statefulset_name" . }}

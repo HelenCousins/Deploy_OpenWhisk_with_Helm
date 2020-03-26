@@ -27,7 +27,7 @@ spec:
       - name: "wait-for-zookeeper"
         image: "busybox"
         imagePullPolicy: "IfNotPresent"
-        command: ["sh", "-c", "result=1; until [ $result -eq 0 ]; do nslookup {{ .Values.global.zookeeperServiceName}}.{{ .Release.Namespace }}; result=$?; echo waiting for {{ .Values.global.zookeeperServiceName}}.{{ .Release.Namespace }}.svc.cluster.local; sleep 1; done;"]
+        command: ["sh", "-c", "result=1; until [ $result -eq 0 ]; do nslookup {{ .Values.global.zookeeperServiceName}}.{{ .Release.Namespace }}.svc.cluster.local; result=$?; echo waiting for {{ .Values.global.zookeeperServiceName}}.{{ .Release.Namespace }}.svc.cluster.local; sleep 1; done;"]
 
       containers:
       - name: {{ template "kafka_statefulset_name" . }}
